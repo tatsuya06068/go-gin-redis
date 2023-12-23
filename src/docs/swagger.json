@@ -1,0 +1,43 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "このswaggerはgin-swaggerの見本api",
+        "title": "gin-swagger todos",
+        "contact": {},
+        "version": "1.0.0"
+    },
+    "paths": {
+        "/ping": {
+            "get": {
+                "description": "do ping",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Hello World"
+                ],
+                "summary": "liveness probe",
+                "parameters": [
+                    {
+                        "type": "string",
+                        "description": "QueryParams",
+                        "name": "test",
+                        "in": "query",
+                        "required": true
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "param"
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

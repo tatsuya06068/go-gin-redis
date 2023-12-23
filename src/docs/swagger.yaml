@@ -1,0 +1,28 @@
+info:
+  contact: {}
+  description: このswaggerはgin-swaggerの見本api
+  title: gin-swagger todos
+  version: 1.0.0
+paths:
+  /ping:
+    get:
+      consumes:
+      - application/json
+      description: do ping
+      parameters:
+      - description: QueryParams
+        in: query
+        name: test
+        required: true
+        type: string
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: param
+      summary: liveness probe
+      tags:
+      - Hello World
+swagger: "2.0"
