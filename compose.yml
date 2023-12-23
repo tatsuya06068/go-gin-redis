@@ -1,0 +1,36 @@
+version: '3.9'
+services:
+  app:
+    build: .
+    ports: 
+      - "3000:3000"
+    environment:
+      - ./.env
+    volumes:
+      - type: bind
+        source: ./src
+        target: /src/app
+    tty: true
+    depends_on:
+      - db
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: 'db'   
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'      
+      MYSQL_ROOT_PASSWORD: 'root'
+    ports:
+      - '3306:3306'
+    volumes:
+      - mysql-data:/var/lib/mysql
+      - ./database:/database
+      - ./my.cnf:/etc/mysql/conf.d/my.cnf
+  redis:
+    image: "redis:latest"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "./data/redis:/data"
+volumes:
+  mysql-data:
